@@ -10,6 +10,7 @@ public class Platform : MonoBehaviour
         Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
 
         if (rb != null) {
+            FindObjectOfType<BounceAudio>().PlaySound();
             Vector3 velocity = rb.velocity; 
             velocity.y = jumpForce;
             rb.velocity = velocity;
