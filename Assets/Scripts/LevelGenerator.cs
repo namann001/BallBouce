@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public GameObject platformPrefab;
+    public GameObject platformMovePrefab;
+    public GameObject platformMoveVerticalPrefab;
     public float numberOfPlatforms = 200f; 
     public float levelWidth = 3f;
     public float minY = 0.5f;
@@ -12,7 +14,8 @@ public class LevelGenerator : MonoBehaviour
     public float posX;
     public float previousPositionX;  
     private int temp; 
-    // Start is called before the first frame update
+    
+    //public Transform transform; 
     public void Spawn()
     {
         Vector3 spawnPosition = new Vector3();
@@ -25,7 +28,22 @@ public class LevelGenerator : MonoBehaviour
             }
             temp = 0; 
             previousPositionX = spawnPosition.x;
-            Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+            if (i > 35 && i % 2 == 0) {
+                Instantiate(platformMovePrefab, spawnPosition, Quaternion.identity);
+            }
+            else if (i > 35 && i % 2 == 1) {
+                Instantiate(platformMoveVerticalPrefab, spawnPosition, Quaternion.identity);
+            }
+            else if (i > 1 && i < 34 && i % 6 == 0) {
+                Instantiate(platformMovePrefab, spawnPosition, Quaternion.identity);
+            }
+            else if (i > 1 && i < 34 && i % 9 == 0) {
+                Instantiate(platformMoveVerticalPrefab, spawnPosition, Quaternion.identity);
+            }
+            else {
+                Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+            }
+            
         }
     }
 

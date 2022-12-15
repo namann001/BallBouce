@@ -14,4 +14,8 @@ public class HighscoreCounter : MonoBehaviour
 
 	text.text = currentHighscore.ToString();
     }
+
+    public int getScore() {
+        return currentHighscore; 
+    }
 }

@@ -17,4 +17,8 @@ public class Score : MonoBehaviour
         }
 	    scoreText.text = currentScore.ToString();
     }
+
+    public int getScore() {
+        return currentScore; 
+    }
 }
